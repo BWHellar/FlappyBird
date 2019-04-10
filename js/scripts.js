@@ -1,7 +1,6 @@
 // Start it up
 var cvs = document.getElementById("canvas");
 var ctx = cvs.getContext("2d");
-
 // Overarching Image Load
 var bird = new Image();
 var bg = new Image();
@@ -17,45 +16,42 @@ pipeSouth.src = "img/pipeSouth.png";
 
 //Variables
 var gap = 75;
-var constant = pipeNorth.height+gap;
+var constant;
 
 var bX = 10;
 var bY = 150;
 
-var gravity = 1;
+var gravity = 1.5;
 
 var score = 0;
 // Here we initiate our audio files.
 var fly = new Audio();
-var score = new Audio();
+var scor = new Audio();
 
 fly.src = "img/fly.mp3";
-score.src = "img/score.mp3";
+scor.src = "img/score.mp3";
 // On Key down
-document.addEventListener("keyDown", moveUp);
+document.addEventListener("keydown", moveUp);
 // Now we want to use this function to alter the height of our bird on press.
 function moveUp(){
-  bY -= 20;
+  bY -= 25;
   fly.play();
 }
 
 // Lets declare the pipe coordinates and give it an empty array.
-var pipe = []
+var pipe = [];
 
 pipe[0] = {
   x : cvs.width,
   y : 0
-}
-
-
-
+};
 // Overarching draw
 function draw() {
-  requestAnimationFrame(draw); 
   //Here we will draw out the background.
   ctx.drawImage(bg,0,0);
   // Here we want to use a for loop to draw all the pipes.
   for (var i = 0; i < pipe.length; i++){
+    constant = pipeNorth.height+gap
     //Here we will draw the pipeNorth.
     ctx.drawImage(pipeNorth, pipe[i].x, pipe[i].y);
     // Here we will draw the pipeNorth.
@@ -76,7 +72,7 @@ function draw() {
     // This will increase the score as we pass the pipes.
     if(pipe[i].x == 5){
       score++;
-      score.play();
+      scor.play();
     }
   }
   // Here we will draw the ground.

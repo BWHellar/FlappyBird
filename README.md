@@ -81,6 +81,7 @@ function draw() {
         y: Math.floor(Math.random()*pipeNorth.height)- pipeNorth.height
       });
     }
+```
 ###### This is our collision mechanic and allows us to detect if the bird hits a pipe.
 ```
     if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){
@@ -88,7 +89,7 @@ function draw() {
     }
 ```
 ###### This will be where the score is registered when the pipe is passed and where the bird height is registered.
- ```
+```
     if(pipe[i].x == 5){
       score++;
       scor.play();
@@ -97,7 +98,7 @@ function draw() {
   ctx.drawImage(fg,0,cvs.height - fg.height);
   ctx.drawImage(bird,bX,bY);
   bY += gravity;
- ```
+```
 ###### This allows for the score to get drawn at the designated spot when a pipe is passed. This also constantly calls the Draw function.
 ```
   ctx.fillStyle = "#000";
